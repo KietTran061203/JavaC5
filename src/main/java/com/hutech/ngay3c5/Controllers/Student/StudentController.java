@@ -44,4 +44,10 @@ public class StudentController {
         studentService.CreateStudent(requestCreateStudent);
         return "redirect:/students";
     }
+    @GetMapping("/view/{id}")
+    public String ViewStudent(@PathVariable String id, Model model){
+        Student student = studentService.getStudentById(id);
+        model.addAttribute("student", student);
+        return "Student/view";
+    }
 }
